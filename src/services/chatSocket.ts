@@ -7,13 +7,15 @@ class ChatSocketService {
   private url: string;
   private messageQueue: any[] = [];
 
-  constructor() {
-    // In dev, assuming the backend is on port 5000 and the browser connects via ws://
-    const isSecure = window.location.protocol === 'https:';
-    const wsProtocol = isSecure ? 'wss://' : 'ws://';
-    // Use window.location.hostname to support external access, or just localhost
-    this.url = `${wsProtocol}localhost:5000`;
-  }
+constructor() {
+  const isSecure = window.location.protocol === 'https:';
+  const wsProtocol = isSecure ? 'wss://' : 'ws://';
+
+  // Use an env var for the real backend host; fallback to localhost for dev
+  const backendHost = import.meta.env.VITE_API_UR || 'localhost:5000';
+
+  this.url = `${wsProtocol}${backendHost}`;
+}
 
   connect() {
     if (this.socket && (this.socket.readyState === WebSocket.CONNECTING || this.socket.readyState === WebSocket.OPEN)) {
