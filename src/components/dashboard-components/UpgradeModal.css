@@ -1,0 +1,201 @@
+.upgrade-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 2rem;
+  font-family: 'Questrial', sans-serif;
+}
+
+.upgrade-modal-content {
+  background: var(--bg-secondary, #0c0c10);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 1100px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+}
+
+.upgrade-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+.upgrade-modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+}
+
+.upgrade-modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--text-muted, #8a8a8a);
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 10;
+}
+
+.upgrade-modal-close:hover {
+  color: var(--text-primary, #ffffff);
+}
+
+.upgrade-modal-header {
+  text-align: center;
+  padding: 3rem 2rem 2rem;
+}
+
+.upgrade-modal-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  color: var(--white, #ffffff);
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.upgrade-modal-header p {
+  color: var(--text-secondary, #8a8a8a);
+  font-size: 1.1rem;
+}
+
+.upgrade-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 0 3rem 4rem;
+}
+
+.upgrade-card {
+  background: var(--bg-card, #0f0f14);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+}
+
+.upgrade-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(155, 93, 229, 0.3);
+  box-shadow: 0 12px 32px rgba(155, 93, 229, 0.1);
+}
+
+.upgrade-card.featured {
+  border-color: var(--purple, #9b5de5);
+  background: linear-gradient(180deg, rgba(155, 93, 229, 0.05) 0%, var(--bg-card, #0f0f14) 100%);
+}
+
+.upgrade-card-tag {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--purple, #9b5de5);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.upgrade-card h3 {
+  font-size: 1.25rem;
+  color: var(--white, #ffffff);
+  margin-bottom: 1rem;
+}
+
+.upgrade-card-price {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: baseline;
+}
+
+.upgrade-card-price .currency {
+  font-size: 1.5rem;
+  color: var(--text-secondary, #8a8a8a);
+}
+
+.upgrade-card-price .amount {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--white, #ffffff);
+  margin: 0 4px;
+}
+
+.upgrade-card-price .period {
+  color: var(--text-secondary, #8a8a8a);
+}
+
+.upgrade-card-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  flex: 1;
+}
+
+.upgrade-card-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 1rem;
+  color: var(--text-secondary, #8a8a8a);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.check-icon {
+  color: var(--gold, #c9a227);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.upgrade-card-action {
+  margin-top: auto;
+}
+
+.upgrade-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-family: 'Questrial', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  background: transparent;
+  color: var(--white, #ffffff);
+  border: 1px solid var(--purple, #9b5de5);
+  transition: all 0.3s;
+}
+
+.upgrade-btn:hover {
+  background: var(--purple, #9b5de5);
+  box-shadow: 0 0 20px rgba(155, 93, 229, 0.3);
+}
+
+.upgrade-card.featured .upgrade-btn {
+  background: var(--purple, #9b5de5);
+  border-color: var(--purple, #9b5de5);
+}
+
+.upgrade-card.featured .upgrade-btn:hover {
+  background: var(--purple-dim, #6b3fa0);
+}
+
+@media (max-width: 900px) {
+  .upgrade-modal-grid {
+    grid-template-columns: 1fr;
+  }
+}

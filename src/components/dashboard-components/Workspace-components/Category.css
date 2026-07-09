@@ -1,0 +1,37 @@
+.workspace-context-menu {
+  position: fixed;
+  background-color: #111214;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);
+  padding: 6px 8px;
+  width: 220px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px solid #1e1f22;
+}
+
+.workspace-context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  color: #B5BAC1;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.1s, color 0.1s;
+}
+
+.workspace-context-menu-item:hover {
+  background-color: #5865F2;
+  color: #FFFFFF;
+}
+
+.workspace-context-menu-divider {
+  height: 1px;
+  background-color: #1e1f22;
+  margin: 4px 4px;
+}

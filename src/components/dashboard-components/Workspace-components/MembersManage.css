@@ -1,0 +1,673 @@
+/* ====================================================================
+   MembersManage.css
+   Prefix: .mm- (members manager)
+   Ultra-Minimal, Spacious Glassmorphic UI (Matching Permissions UI)
+   ==================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@400;500;600&display=swap');
+
+.mm-container {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  background: transparent;
+}
+
+/* ── Header ─────────────────────────────────────────────────────── */
+.mm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.mm-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0 0 8px 0;
+  background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.4) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.03em;
+  drop-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.mm-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.4);
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* ── Toolbar ────────────────────────────────────────────────────── */
+.mm-toolbar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.mm-search {
+  position: relative;
+  flex: 1;
+  max-width: 400px;
+}
+
+.mm-search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255,255,255,0.4);
+}
+
+.mm-search-input {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 14px 16px 14px 44px;
+  border-radius: 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.mm-search-input:focus {
+  outline: none;
+  border-color: rgba(255,255,255,0.4);
+  background: rgba(0,0,0,0.5);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.mm-count {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── List ───────────────────────────────────────────────────────── */
+.mm-list {
+  background: rgba(10,10,12,0.4);
+  backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.mm-list-header {
+  display: flex;
+  padding: 24px 32px;
+  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.mm-col-name { flex: 2; display: flex; align-items: center; gap: 16px; }
+.mm-col-id { flex: 1; display: flex; align-items: center; }
+.mm-col-role { flex: 1; display: flex; align-items: center; }
+.mm-col-actions { width: 60px; display: flex; justify-content: flex-end; gap: 8px; }
+
+.mm-list-item {
+  display: flex;
+  padding: 24px 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  align-items: center;
+}
+
+.mm-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.mm-list-item:last-child {
+  border-bottom: none;
+}
+
+.mm-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: rgba(0,0,0,0.8);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.mm-name-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mm-username {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.mm-email {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.4);
+}
+
+.mm-badge {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: rgba(255,255,255,0.6);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+.mm-role-badge {
+  background-color: rgba(155, 93, 229, 0.15);
+  color: #d1b3ff;
+  border: 1px solid rgba(155, 93, 229, 0.3);
+  padding: 6px 16px;
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mm-role-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.mm-role-badge--none {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: rgba(255,255,255,0.4);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.mm-action-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid transparent;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.mm-action-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.mm-action-btn--delete {
+  color: #f87171;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.mm-list-item:hover .mm-action-btn--delete {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.mm-action-btn--delete:hover {
+  background: rgba(248, 113, 113, 0.15);
+  border-color: rgba(248, 113, 113, 0.3);
+  color: #fca5a5;
+  box-shadow: 0 5px 15px rgba(248,113,113,0.2);
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────── */
+.mm-btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #9b5de5 0%, #7c3aed 100%);
+  border: 1px solid rgba(155, 93, 229, 0.5);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 20px rgba(155, 93, 229, 0.3);
+}
+
+.mm-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(155, 93, 229, 0.5);
+  border-color: rgba(155, 93, 229, 0.8);
+}
+
+.mm-btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.7);
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mm-btn-secondary:hover {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border-color: rgba(255,255,255,0.3);
+}
+
+.mm-btn-icon {
+  padding: 14px;
+}
+
+/* ── Modal ─────────────────────────────────────────────────────────── */
+.mm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: mmFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mm-modal {
+  background: rgba(10,10,12,0.6);
+  backdrop-filter: blur(40px);
+  width: 100%;
+  max-width: 500px;
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+  overflow: hidden;
+}
+
+.mm-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mm-modal-header h2 {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.mm-modal-close {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid transparent;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.mm-modal-close:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.mm-modal-form {
+  padding: 32px;
+}
+
+.mm-form-group {
+  margin-bottom: 24px;
+}
+
+.mm-label {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.mm-required {
+  color: #f87171;
+  margin-left: 4px;
+}
+
+.mm-optional {
+  color: rgba(255,255,255,0.2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-left: 8px;
+}
+
+.mm-password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.mm-password-toggle {
+  position: absolute;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.2s;
+}
+
+.mm-password-toggle:hover {
+  color: #fff;
+}
+
+.mm-no-roles {
+  color: #f1c40f;
+  background-color: rgba(241, 196, 15, 0.1);
+  border: 1px solid rgba(241, 196, 15, 0.3);
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mm-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+/* ── States ─────────────────────────────────────────────────────────── */
+.mm-error-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  color: #f87171;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.mm-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 100px 40px;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+}
+
+.mm-empty-icon {
+  width: 80px;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.2);
+  margin-bottom: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.mm-empty-state h3 {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.mm-empty-state p { margin: 0; font-size: 1.05rem; }
+
+@keyframes mmFadeIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes mm-spin { to { transform: rotate(360deg); } }
+.mm-spin { animation: mm-spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+
+.mm-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 60px 0;
+  color: rgba(255,255,255,0.4);
+  font-size: 1.05rem;
+}
+
+/* ── Inline Role Edit Row ── */
+.mm-role-edit-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mm-role-select {
+  padding: 6px 12px;
+  font-size: 0.95rem;
+  max-width: 180px;
+  background: rgba(0,0,0,0.5);
+}
+
+.mm-confirm-btn {
+  color: #57dc99;
+}
+.mm-confirm-btn:hover {
+  color: #fff;
+  background: rgba(87, 220, 153, 0.2);
+  border-color: rgba(87, 220, 153, 0.4);
+  box-shadow: 0 0 15px rgba(87, 220, 153, 0.2);
+}
+
+/* -- Creative Modal Layout -- */
+.mm-creative-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px;
+}
+
+.mm-modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.mm-creative-icon-wrap {
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(155, 93, 229, 0.2) 0%, rgba(0, 242, 254, 0.1) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(155, 93, 229, 0.3);
+}
+
+.mm-modal-title-wrap p {
+  margin: 4px 0 0 0;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.95rem;
+}
+
+.mm-creative-grid {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.mm-creative-avatar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mm-avatar-preview {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Outfit", sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
+  z-index: 2;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
+}
+
+.mm-avatar-glow {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(155, 93, 229, 0.3) 0%, transparent 70%);
+  z-index: 1;
+  animation: pulseGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.9); opacity: 0.5; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+.mm-creative-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Standard Inputs ── */
+.mm-input, .mm-select {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.mm-input:focus, .mm-select:focus {
+  outline: none;
+  border-color: rgba(155, 93, 229, 0.8);
+  background: rgba(0,0,0,0.6);
+  box-shadow: 0 0 0 4px rgba(155, 93, 229, 0.15), 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.mm-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.mm-role-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.mm-role-shield {
+  position: absolute;
+  left: 16px;
+  color: rgba(155, 93, 229, 0.8);
+  pointer-events: none;
+}
+
+.mm-select-with-icon {
+  padding-left: 44px;
+}
+
+/* Redesign Modal size for grid */
+.mm-modal {
+  max-width: 680px; /* Wider to accommodate grid */
+}
+
+
+.mm-select option {
+  background: #111;
+  color: #fff;
+}

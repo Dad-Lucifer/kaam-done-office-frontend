@@ -1,0 +1,398 @@
+.ws-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-primary, #050507);
+  background-image: 
+    radial-gradient(circle at 80% 20%, rgba(155, 93, 229, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 20% 80%, rgba(0, 242, 254, 0.05) 0%, transparent 40%),
+    url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.03%22/%3E%3C/svg%3E');
+  z-index: 9999;
+  display: flex;
+  color: var(--text-primary);
+  font-family: 'Questrial', sans-serif;
+  animation: wsFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes wsFadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Sidebar */
+.ws-sidebar {
+  width: 320px;
+  flex-shrink: 0;
+  background: rgba(10, 10, 12, 0.4);
+  backdrop-filter: blur(40px);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ws-sidebar-content {
+  width: 100%;
+  padding: 60px 24px;
+}
+
+.ws-sidebar-header {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  padding: 0 10px;
+  letter-spacing: 0.05em;
+}
+
+.ws-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.ws-nav-item {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  padding: 8px 10px;
+  margin-bottom: 2px;
+  border-radius: 4px;
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.ws-nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.ws-nav-item.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+}
+
+.ws-nav-danger {
+  color: #f23f43 !important;
+}
+
+.ws-nav-danger:hover {
+  background-color: rgba(242, 63, 67, 0.1) !important;
+}
+
+.ws-nav-divider {
+  margin: 16px 10px 8px 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 16px;
+  letter-spacing: 0.05em;
+}
+
+.ws-nav-divider:empty {
+  margin: 8px 10px;
+  padding: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Main Content Area */
+.ws-main {
+  flex: 1;
+  display: flex;
+  position: relative;
+  overflow-y: auto;
+}
+
+.ws-main::-webkit-scrollbar {
+  width: 8px;
+}
+.ws-main::-webkit-scrollbar-track {
+  background: transparent;
+}
+.ws-main::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+.ws-main::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.ws-content-wrapper {
+  flex: 1;
+  max-width: 100%; /* Removed 800px constraint to allow full right space coverage */
+  padding: 60px 60px;
+}
+
+/* Close Rail */
+.ws-close-rail {
+  width: 150px;
+  padding-top: 60px;
+  display: flex;
+  justify-content: flex-start;
+  position: sticky;
+  top: 0;
+  height: max-content;
+}
+
+.ws-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ws-close-circle {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--text-secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.ws-close-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.ws-close-btn:hover {
+  color: var(--white);
+}
+
+.ws-close-btn:hover .ws-close-circle {
+  border-color: var(--white);
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+/* Profile Layout */
+.ws-profile-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  max-width: 900px; /* Constrain profile so it doesn't stretch weirdly full-width */
+}
+
+.ws-profile-left {
+  flex: 1;
+}
+
+.ws-profile-right {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+/* Typography & Forms */
+.ws-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: var(--white);
+}
+
+.ws-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0 0 32px 0;
+  line-height: 1.4;
+}
+
+.ws-section {
+  margin-bottom: 24px;
+}
+
+.ws-section-divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.06);
+  margin: 24px 0;
+}
+
+.ws-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.ws-help-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0 0 12px 0;
+}
+
+.ws-input, .ws-textarea {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  padding: 12px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.ws-input:focus, .ws-textarea:focus {
+  outline: none;
+  border-color: var(--purple);
+  box-shadow: 0 0 8px rgba(155, 93, 229, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ws-textarea {
+  resize: vertical;
+}
+
+.ws-btn-primary {
+  background: var(--purple);
+  border: none;
+  color: var(--white);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-family: 'Questrial', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 10px rgba(155, 93, 229, 0.3);
+}
+
+.ws-btn-primary:hover {
+  background: #a975e8;
+  transform: translateY(-1px);
+}
+
+/* Banner Grid */
+.ws-banner-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.ws-banner-option {
+  aspect-ratio: 16/9;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.ws-banner-option:hover {
+  transform: scale(1.05);
+}
+
+.ws-banner-option.selected {
+  border-color: var(--gold, #ffb703);
+}
+
+/* Traits Grid */
+.ws-traits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.ws-trait-input {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 10px 12px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ws-trait-input:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Subscription Card */
+.ws-subscription-card {
+  background-color: var(--bg-card, #121217);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  padding: 24px;
+}
+
+.ws-sub-title {
+  margin: 0 0 20px 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding-bottom: 12px;
+}
+
+.ws-sub-status {
+  margin-bottom: 16px;
+}
+
+.ws-sub-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ws-sub-badge.free {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+}
+
+.ws-sub-badge.pro {
+  background: linear-gradient(135deg, #9b5de5, #f15bb5);
+  color: var(--white);
+  box-shadow: 0 0 10px rgba(155, 93, 229, 0.4);
+}
+
+.ws-sub-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0 0 24px 0;
+}
+
+.ws-btn-upgrade {
+  width: 100%;
+  background: linear-gradient(135deg, #9b5de5, #f15bb5);
+  border: none;
+  color: var(--white);
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  font-family: 'Questrial', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 15px rgba(155, 93, 229, 0.3);
+}
+
+.ws-btn-upgrade:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(155, 93, 229, 0.5);
+}

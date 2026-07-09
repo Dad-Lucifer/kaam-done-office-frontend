@@ -1,0 +1,354 @@
+/* ── TaskManager.css — Operiq Aesthetic ─────────────────────────────── */
+
+@keyframes progress-fill {
+  from { stroke-dashoffset: 251; }
+}
+
+@keyframes pulse-glow-critical {
+  0%, 100% { box-shadow: 0 0 12px rgba(255,59,59,0.4), 0 0 32px rgba(255,59,59,0.15); }
+  50%       { box-shadow: 0 0 24px rgba(255,59,59,0.7), 0 0 50px rgba(255,59,59,0.3); }
+}
+
+@keyframes pulse-glow-high {
+  0%, 100% { box-shadow: 0 0 12px rgba(255,122,0,0.4), 0 0 32px rgba(255,122,0,0.15); }
+  50%       { box-shadow: 0 0 24px rgba(255,122,0,0.7), 0 0 50px rgba(255,122,0,0.3); }
+}
+
+@keyframes timer-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes animate-pulse-slow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+/* ── Global Backgrounds & Gradients ───────────────────────────────────────── */
+
+.mission-control-bg {
+  position: relative;
+  background-color: transparent;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.mission-control-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center top, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at center top, black 40%, transparent 80%);
+}
+
+.mission-control-glow {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  height: 60vw;
+  max-width: 1200px;
+  max-height: 800px;
+  background-color: rgba(124, 58, 237, 0.12);
+  border-radius: 50%;
+  filter: blur(160px);
+  mix-blend-mode: screen;
+  animation: animate-pulse-slow 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Typography & Pills ───────────────────────────────────────────────────── */
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  padding: 6px 16px;
+  backdrop-filter: blur(12px);
+}
+
+.hero-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.85;
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+}
+
+.hero-subtitle {
+  background: linear-gradient(90deg, #C4B5FD 0%, #FFFFFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── Floating Stat Widgets (Landing Page Style) ───────────────────────────── */
+
+.stat-widget {
+  background: rgba(20, 20, 24, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-widget::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+/* ── Mission Card (Landing Page Widget Style) ─────────────────────────────── */
+
+.mission-card {
+  position: relative;
+  animation: card-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  background: rgba(15, 15, 18, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mission-card:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+  transform: translateY(-2px);
+}
+
+.mission-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.6), transparent 50%, rgba(167,139,250,0.2));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.mission-card:hover::after,
+.mission-card.active::after {
+  opacity: 1;
+}
+
+.mission-card.priority-critical { animation: pulse-glow-critical 2.5s ease-in-out infinite; }
+.mission-card.priority-high      { animation: pulse-glow-high 3s ease-in-out infinite; }
+
+/* Dragging ghost state */
+.drag-ghost {
+  opacity: 0.5;
+  transform: scale(0.95);
+  box-shadow: 0 0 0 2px rgba(124,58,237,0.5);
+}
+
+/* ── Avatar Stack (Landing Page Style) ────────────────────────────────────── */
+
+.avatar-stack-container {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-stack-item {
+  border: 2px solid #0f0f12; /* Matches surface background */
+  margin-left: -8px;
+  transition: transform 0.2s ease;
+}
+
+.avatar-stack-item:first-child {
+  margin-left: 0;
+}
+
+.avatar-stack-container:hover .avatar-stack-item {
+  transform: translateX(4px);
+}
+.avatar-stack-container:hover .avatar-stack-item:first-child {
+  transform: translateX(0);
+}
+
+/* ── Progress Ring ────────────────────────────────────────────────────────── */
+
+.progress-ring {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.progress-ring-track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 3;
+}
+
+.progress-ring-fill {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Timer Active ─────────────────────────────────────────────────────────── */
+
+.timer-active {
+  animation: timer-blink 1.4s ease-in-out infinite;
+}
+
+.timer-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  animation: timer-blink 1s ease-in-out infinite;
+}
+
+/* ── Skeleton Loading ─────────────────────────────────────────────────────── */
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.02) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.02) 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 8px;
+}
+
+/* ── Kanban Column ────────────────────────────────────────────────────────── */
+
+.kanban-column {
+  min-width: 320px;
+  max-width: 320px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.kanban-column-header {
+  position: relative;
+  margin-bottom: 8px;
+  padding-bottom: 12px;
+}
+
+.kanban-column-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), transparent);
+}
+
+.kanban-column::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 20px 20px 0 0;
+  opacity: 0.8;
+}
+
+/* Column top-border colors */
+.kanban-col-backlog::before   { background: linear-gradient(90deg, #6B7280, transparent); }
+.kanban-col-planned::before   { background: linear-gradient(90deg, #3B82F6, transparent); }
+.kanban-col-assigned::before  { background: linear-gradient(90deg, #8B5CF6, transparent); }
+.kanban-col-in-progress::before { background: linear-gradient(90deg, #7C3AED, transparent); }
+.kanban-col-review::before    { background: linear-gradient(90deg, #F59E0B, transparent); }
+.kanban-col-blocked::before   { background: linear-gradient(90deg, #EF4444, transparent); }
+.kanban-col-completed::before { background: linear-gradient(90deg, #10B981, transparent); }
+.kanban-col-cancelled::before { background: linear-gradient(90deg, #374151, transparent); }
+
+/* ── Task Detail Panel ────────────────────────────────────────────────────── */
+
+.task-detail-overlay {
+  animation: slide-in-right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.task-detail-sidebar {
+  background: rgba(10, 10, 12, 0.85);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: -20px 0 60px rgba(0,0,0,0.5);
+}
+
+/* ── Activity Timeline ────────────────────────────────────────────────────── */
+
+.activity-line {
+  position: absolute;
+  left: 11px;
+  top: 24px;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(124,58,237,0.4), transparent);
+}
+
+/* ── View Toggle ──────────────────────────────────────────────────────────── */
+
+.view-toggle {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  padding: 4px;
+  backdrop-filter: blur(12px);
+}
+
+.view-toggle-btn {
+  border-radius: 9999px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.view-toggle-btn.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+}
