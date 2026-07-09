@@ -12,7 +12,7 @@ constructor() {
   const wsProtocol = isSecure ? 'wss://' : 'ws://';
 
   // Use an env var for the real backend host; fallback to localhost for dev
-  const backendHost = import.meta.env.VITE_API_UR || 'localhost:5000';
+  const backendHost = import.meta.env.VITE_API_URL || 'localhost:5000';
 
   this.url = `${wsProtocol}${backendHost}`;
 }
