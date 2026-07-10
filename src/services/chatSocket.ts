@@ -7,15 +7,11 @@ class ChatSocketService {
   private url: string;
   private messageQueue: any[] = [];
 
-constructor() {
-  const isSecure = window.location.protocol === 'https:';
-  const wsProtocol = isSecure ? 'wss://' : 'ws://';
-
-  // Use an env var for the real backend host; fallback to localhost for dev
-  const backendHost = import.meta.env.VITE_API_URL || 'localhost:5000';
-
-  this.url = `${wsProtocol}${backendHost}`;
-}
+  constructor() {
+    // Derive WebSocket URL from the VITE_API_URL env variable (http→ws, https→wss)
+    const apiUrl = import.meta.env.VITE_API_URL as string || 'http://localhost:5000';
+    this.url = apiUrl.replace(/^http/, 'ws');
+  }
 
   connect() {
     if (this.socket && (this.socket.readyState === WebSocket.CONNECTING || this.socket.readyState === WebSocket.OPEN)) {
