@@ -141,7 +141,7 @@ export default function Solution() {
         </FadeUp>
         <FadeUp delay={0.2}>
           <p className="text-[16px] md:text-[20px] leading-[1.6] text-text-secondary max-w-[540px] mx-auto">
-            Operiq replaces your scattered tools with one intelligent, unified workspace that feels like magic.
+            Kaam Done replaces your scattered tools with one intelligent, unified workspace that feels like magic.
           </p>
         </FadeUp>
       </div>
