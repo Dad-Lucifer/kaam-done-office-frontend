@@ -5,15 +5,15 @@ import { Plus } from 'lucide-react';
 
 const faqs = [
   {
-    q: "What is Operiq?",
+    q: "What is Kaam Done?",
     a: "Operiq is an all-in-one virtual office operating system that lets businesses manage teams, attendance, tasks, and operations from a single platform — replacing the need for a physical office."
   },
   {
-    q: "How does Operiq work?",
+    q: "How does Kaam Done work?",
     a: "Sign up, create your organization, invite your team, and start managing. Everything runs in the cloud — no installations, no physical infrastructure required."
   },
   {
-    q: "Can I manage remote teams with Operiq?",
+    q: "Can I manage remote teams with Kaam Done?",
     a: "Absolutely. Operiq is explicitly built for distributed and remote teams. Track attendance, assign tasks, and collaborate seamlessly regardless of geographic location."
   },
   {
