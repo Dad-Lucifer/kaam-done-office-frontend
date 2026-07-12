@@ -70,7 +70,7 @@ export default function WhyOperiq() {
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-8 pb-6 border-b border-[rgba(124,58,237,0.2)]">
                   <h3 className="font-display text-[24px] md:text-[32px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-light">
-                    Operiq OS
+                    KAAM DONE OS
                   </h3>
                   <div className="px-3 py-1 bg-purple-primary/20 border border-purple-primary/30 rounded-full">
                     <span className="text-[10px] font-bold text-purple-light tracking-widest uppercase">The Future</span>
