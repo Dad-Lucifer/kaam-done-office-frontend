@@ -61,7 +61,7 @@ const MemberLoginPage: React.FC = () => {
         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-primary to-purple-light flex items-center justify-center shadow-[0_0_20px_rgba(124,58,237,0.4)] group-hover:shadow-[0_0_30px_rgba(124,58,237,0.6)] transition-shadow">
           <span className="text-white font-display font-bold text-sm tracking-wider">O</span>
         </div>
-        <span className="font-display font-bold text-white text-xl tracking-[0.15em] uppercase">Operiq</span>
+        <span className="font-display font-bold text-white text-xl tracking-[0.15em] uppercase">Kaam Done</span>
       </Link>
 
       <motion.div 
