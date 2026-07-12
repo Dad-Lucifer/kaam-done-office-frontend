@@ -253,9 +253,9 @@
   border-radius: 8px;
 }
 
-/* ── Kanban Column ────────────────────────────────────────────────────────── */
+/* ── drag Column ────────────────────────────────────────────────────────── */
 
-.kanban-column {
+.drag-column {
   min-width: 320px;
   max-width: 320px;
   flex-shrink: 0;
@@ -270,13 +270,13 @@
   overflow: hidden;
 }
 
-.kanban-column-header {
+.drag-column-header {
   position: relative;
   margin-bottom: 8px;
   padding-bottom: 12px;
 }
 
-.kanban-column-header::after {
+.drag-column-header::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -286,7 +286,7 @@
   background: linear-gradient(90deg, rgba(255,255,255,0.06), transparent);
 }
 
-.kanban-column::before {
+.drag-column::before {
   content: '';
   position: absolute;
   top: 0;
@@ -298,14 +298,14 @@
 }
 
 /* Column top-border colors */
-.kanban-col-backlog::before   { background: linear-gradient(90deg, #6B7280, transparent); }
-.kanban-col-planned::before   { background: linear-gradient(90deg, #3B82F6, transparent); }
-.kanban-col-assigned::before  { background: linear-gradient(90deg, #8B5CF6, transparent); }
-.kanban-col-in-progress::before { background: linear-gradient(90deg, #7C3AED, transparent); }
-.kanban-col-review::before    { background: linear-gradient(90deg, #F59E0B, transparent); }
-.kanban-col-blocked::before   { background: linear-gradient(90deg, #EF4444, transparent); }
-.kanban-col-completed::before { background: linear-gradient(90deg, #10B981, transparent); }
-.kanban-col-cancelled::before { background: linear-gradient(90deg, #374151, transparent); }
+.drag-col-backlog::before   { background: linear-gradient(90deg, #6B7280, transparent); }
+.drag-col-planned::before   { background: linear-gradient(90deg, #3B82F6, transparent); }
+.drag-col-assigned::before  { background: linear-gradient(90deg, #8B5CF6, transparent); }
+.drag-col-in-progress::before { background: linear-gradient(90deg, #7C3AED, transparent); }
+.drag-col-review::before    { background: linear-gradient(90deg, #F59E0B, transparent); }
+.drag-col-blocked::before   { background: linear-gradient(90deg, #EF4444, transparent); }
+.drag-col-completed::before { background: linear-gradient(90deg, #10B981, transparent); }
+.drag-col-cancelled::before { background: linear-gradient(90deg, #374151, transparent); }
 
 /* ── Task Detail Panel ────────────────────────────────────────────────────── */
 

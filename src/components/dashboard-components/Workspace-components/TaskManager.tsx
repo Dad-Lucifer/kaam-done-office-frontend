@@ -23,7 +23,7 @@ import type { Task, TaskStatus, TaskPriority, Subtask, TaskComment, ActivityLog 
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
-type ViewMode = 'mission' | 'kanban' | 'analytics';
+type ViewMode = 'mission' | 'Drag' | 'analytics';
 
 interface CurrentUser {
   id: string;
@@ -890,9 +890,9 @@ const TaskDetailPanel = memo(({ taskId, members, roles, currentUser, onClose, on
   );
 });
 
-// ── Kanban Card ───────────────────────────────────────────────────────────────
+// ── drag Card ───────────────────────────────────────────────────────────────
 
-const KanbanCard = memo(({ task, members, onClick, dragging, dense }: {
+const dragCard = memo(({ task, members, onClick, dragging, dense }: {
   task: Task;
   members: TeamMember[];
   onClick: () => void;
@@ -938,18 +938,18 @@ const KanbanCard = memo(({ task, members, onClick, dragging, dense }: {
   );
 });
 
-// ── Kanban Board ──────────────────────────────────────────────────────────────
+// ── drag Board ──────────────────────────────────────────────────────────────
 
-type KanbanTab = 'all' | 'planning' | 'execution' | 'done';
+type dragTab = 'all' | 'planning' | 'execution' | 'done';
 
-const KANBAN_TABS: { id: KanbanTab; label: string; statuses: TaskStatus[] }[] = [
+const drag_TABS: { id: dragTab; label: string; statuses: TaskStatus[] }[] = [
   { id: 'all', label: 'All Columns', statuses: ORDERED_STATUSES },
   { id: 'planning', label: 'Planning', statuses: ['BACKLOG', 'PLANNED', 'ASSIGNED'] },
   { id: 'execution', label: 'Execution', statuses: ['IN_PROGRESS', 'REVIEW', 'BLOCKED'] },
   { id: 'done', label: 'Done', statuses: ['COMPLETED', 'CANCELLED'] },
 ];
 
-const KanbanBoard = memo(({ tasks, members, onTaskClick, onStatusChange }: {
+const dragBoard = memo(({ tasks, members, onTaskClick, onStatusChange }: {
   tasks: Task[];
   members: TeamMember[];
   onTaskClick: (taskId: string) => void;
@@ -957,10 +957,10 @@ const KanbanBoard = memo(({ tasks, members, onTaskClick, onStatusChange }: {
 }) => {
   const [draggedTaskId, setDraggedTaskId] = useState<string | null>(null);
   const [dragOverStatus, setDragOverStatus] = useState<TaskStatus | null>(null);
-  const [activeTab, setActiveTab] = useState<KanbanTab>('all');
+  const [activeTab, setActiveTab] = useState<dragTab>('all');
 
   const visibleStatuses = useMemo(() => {
-    return KANBAN_TABS.find(t => t.id === activeTab)?.statuses || ORDERED_STATUSES;
+    return drag_TABS.find(t => t.id === activeTab)?.statuses || ORDERED_STATUSES;
   }, [activeTab]);
 
   const columns = useMemo(() => visibleStatuses.map(s => ({
@@ -971,11 +971,11 @@ const KanbanBoard = memo(({ tasks, members, onTaskClick, onStatusChange }: {
   const isAllColumnsMode = activeTab === 'all';
 
   return (
-    <div className="h-full flex flex-col overflow-hidden kanban-container">
+    <div className="h-full flex flex-col overflow-hidden drag-container">
       {/* Tabs */}
       <div className="flex-shrink-0 px-6 py-3 border-b border-[rgba(255,255,255,0.06)] bg-[rgba(0,0,0,0.2)] overflow-x-auto custom-scrollbar">
         <div className="flex items-center gap-2">
-          {KANBAN_TABS.map(tab => (
+          {drag_TABS.map(tab => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
@@ -988,7 +988,7 @@ const KanbanBoard = memo(({ tasks, members, onTaskClick, onStatusChange }: {
       </div>
 
       {/* Board */}
-      <div className="flex-1 overflow-x-auto kanban-scroll relative">
+      <div className="flex-1 overflow-x-auto drag-scroll relative">
         <div className={`flex h-full p-4 ${isAllColumnsMode ? 'gap-2 w-full min-w-full' : 'gap-5'}`} style={{ width: isAllColumnsMode ? '100%' : 'max-content' }}>
           <AnimatePresence mode="popLayout">
             {columns.map(col => {
@@ -1002,7 +1002,7 @@ const KanbanBoard = memo(({ tasks, members, onTaskClick, onStatusChange }: {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3, ease: 'circOut' }}
                   key={col.status}
-                  className={`flex flex-col bg-[rgba(20,20,24,0.3)] backdrop-blur-sm border border-[rgba(255,255,255,0.05)] rounded-2xl overflow-hidden relative kanban-col-${slug} group/column transition-all duration-300 ${isAllColumnsMode ? 'flex-1 hover:flex-[1.5] flex-shrink' : 'w-[300px] flex-shrink-0'}`}
+                  className={`flex flex-col bg-[rgba(20,20,24,0.3)] backdrop-blur-sm border border-[rgba(255,255,255,0.05)] rounded-2xl overflow-hidden relative drag-col-${slug} group/column transition-all duration-300 ${isAllColumnsMode ? 'flex-1 hover:flex-[1.5] flex-shrink' : 'w-[300px] flex-shrink-0'}`}
                   onDragOver={e => { e.preventDefault(); setDragOverStatus(col.status); }}
                   onDrop={() => {
                     if (draggedTaskId && col.status !== tasks.find(t => t.taskId === draggedTaskId)?.status) {
@@ -1034,7 +1034,7 @@ const KanbanBoard = memo(({ tasks, members, onTaskClick, onStatusChange }: {
                         <div key={task.taskId} draggable
                           onDragStart={() => setDraggedTaskId(task.taskId)}
                           onDragEnd={() => setDraggedTaskId(null)}>
-                          <KanbanCard
+                          <dragCard
                             task={task} members={members}
                             onClick={() => onTaskClick(task.taskId)}
                             dragging={draggedTaskId === task.taskId}
@@ -1780,7 +1780,7 @@ const TaskManager: React.FC<TaskManagerProps> = ({ currentUser, channelId }) => 
             <div className="flex items-center bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] rounded-xl p-1 gap-1 backdrop-blur-xl">
           {([
             { id: 'mission', icon: <LayoutGrid size={13} />, label: 'Grid' },
-            { id: 'kanban',  icon: <Columns size={13} />,    label: 'Kanban' },
+            { id: 'drag',  icon: <Columns size={13} />,    label: 'drag' },
             { id: 'analytics', icon: <BarChart2 size={13} />, label: 'Analytics' },
           ] as { id: ViewMode; icon: React.ReactNode; label: string }[]).map(v => (
             <button key={v.id} onClick={() => setView(v.id)}
@@ -1912,8 +1912,8 @@ const TaskManager: React.FC<TaskManagerProps> = ({ currentUser, channelId }) => 
             </div>
           )}
 
-          {view === 'kanban' && (
-            <KanbanBoard
+          {view === 'drag' && (
+            <dragBoard
               tasks={filteredTasks}
               members={members}
               onTaskClick={id => setSelectedTaskId(id)}
