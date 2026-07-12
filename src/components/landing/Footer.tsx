@@ -18,7 +18,7 @@ export default function Footer() {
           {/* Logo Column */}
           <div className="col-span-2 flex flex-col gap-4">
             <Link to="/" className="flex items-baseline font-display font-bold text-[22px] text-text-primary">
-              Operiq<span className="w-1 h-1 rounded-full bg-purple-primary ml-[2px]"></span>
+              Kaam Done<span className="w-1 h-1 rounded-full bg-purple-primary ml-[2px]"></span>
             </Link>
             <p className="text-[14px] text-text-tertiary max-w-[240px]">
               The virtual office operating system.
@@ -50,7 +50,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-[rgba(255,255,255,0.08)] gap-4">
           <p className="text-[13px] text-text-tertiary">
-            © 2026 Operiq. All rights reserved.
+            © 2026 Kaam Done. All rights reserved.
           </p>
           <p className="text-[13px] text-text-tertiary">
             Made with precision.
