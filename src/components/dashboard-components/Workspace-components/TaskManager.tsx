@@ -23,7 +23,7 @@ import type { Task, TaskStatus, TaskPriority, Subtask, TaskComment, ActivityLog 
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
-type ViewMode = 'mission' | 'Drag' | 'analytics';
+type ViewMode = 'mission' | 'drag' | 'analytics';
 
 interface CurrentUser {
   id: string;
